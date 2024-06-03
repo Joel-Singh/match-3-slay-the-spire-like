@@ -15,6 +15,9 @@ local function getInitialBoard()
     create10Letters(),
     create10Letters(),
     create10Letters(),
+    x = 50,
+    y = 50,
+    spacing = 30
   }
 end
 
@@ -28,7 +31,7 @@ end
 function love.draw()
   for indexRow,row in ipairs(board) do
     for indexColumn,letter in ipairs(row) do
-      love.graphics.print(letter, indexColumn * 30, indexRow * 30)
+      love.graphics.print(letter, indexColumn * board.spacing + board.x, indexRow * board.spacing + board.y)
     end
   end
 end
