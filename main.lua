@@ -32,8 +32,12 @@ local function getInitialBoard()
   board.ycount = countnumerickeys(board)
   board.xcount = countnumerickeys(board[1])
 
-  board.xspacing = board.width / board.xcount
-  board.yspacing = board.height / board.ycount
+  board.xspacing = board.width / (board.xcount - 1)
+
+  board.yspacing = board.height / (board.ycount - 1)
+
+  local letterHeight = 32
+  board.yspacing = board.yspacing - (letterHeight / board.ycount - 1)
 
   board.xend = board.x + board.width
   board.yend = board.x + board.height
