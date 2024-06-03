@@ -25,6 +25,8 @@ local function getInitialBoard()
 
   board.xspacing = board.width / board.xcount
   board.yspacing = board.height / board.ycount
+  board.xend = board.x + board.width
+  board.yend = board.x + board.height
 
   return board
 end
@@ -42,9 +44,15 @@ function love.draw()
       love.graphics.print(letter, (indexcolumn - 1) * board.xspacing + board.x, (indexrow - 1) * board.yspacing + board.y)
     end
   end
+
+  love.graphics.rectangle("fill", 50, 50, 1, 1)
+  love.graphics.rectangle("fill", 350, 350, 1, 1)
 end
 
+local count = 0
 function love.mousepressed( x, y, button, istouch, presses )
-  print("The x is " .. x)
-  print("The y is " .. y)
+  if (x >= board.x and x <= board.xend and y >= board.y and y <= board.yend ) then
+    count = count + 1
+    print("board pressed " .. count)
+  end
 end
