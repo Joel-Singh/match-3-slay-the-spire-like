@@ -1,20 +1,20 @@
 local board = {}
 
 local function getInitialBoard()
-  local function create10Letters()
+  local function create10letters()
     return {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
   end
   return {
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
-    create10Letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
+    create10letters(),
     x = 50,
     y = 50,
     spacing = 30
@@ -29,9 +29,9 @@ function love.load()
 end
 
 function love.draw()
-  for indexRow,row in ipairs(board) do
-    for indexColumn,letter in ipairs(row) do
-      love.graphics.print(letter, indexColumn * board.spacing + board.x, indexRow * board.spacing + board.y)
+  for indexrow,row in ipairs(board) do
+    for indexcolumn,letter in ipairs(row) do
+      love.graphics.print(letter, indexcolumn * board.spacing + board.x, indexrow * board.spacing + board.y)
     end
   end
 end
