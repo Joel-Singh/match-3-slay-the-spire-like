@@ -19,12 +19,22 @@ local function getInitialBoard()
     y = 50,
     width = 300,
     height = 300,
-    ycount = 10,
-    xcount = 10,
   }
+
+  local function countnumerickeys(table)
+    local count = 0
+    for _,_ in ipairs(table) do
+      count = count + 1
+    end
+    return count
+  end
+
+  board.ycount = countnumerickeys(board)
+  board.xcount = countnumerickeys(board[1])
 
   board.xspacing = board.width / board.xcount
   board.yspacing = board.height / board.ycount
+
   board.xend = board.x + board.width
   board.yend = board.x + board.height
 
