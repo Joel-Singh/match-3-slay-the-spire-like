@@ -35,7 +35,6 @@ function love.load()
   board = getInitialBoard()
   local Font = love.graphics.newFont(16)
   love.graphics.setFont(Font)
-
 end
 
 function love.draw()
