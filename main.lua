@@ -18,10 +18,20 @@ function love.draw()
   love.graphics.rectangle("fill", 350, 350, 1, 1)
 end
 
-local count = 0
+local lastClickedLetter = nil
 function love.mousepressed( x, y, button, istouch, presses )
   if (x >= board.x and x <= board.xend and y >= board.y and y <= board.yend ) then
-    count = count + 1
-    print("letter clicked is " .. board.getLetter(x, y).get() .." " .. count)
+    local justClickedLetter = board.getLetter(x, y)
+
+    if (lastClickedLetter == nil) then
+      lastClickedLetter = justClickedLetter
+    else
+      local justClickedCharacter = justClickedLetter.get()
+      local lastClickedCharacter = lastClickedLetter.get()
+      justClickedLetter.set(lastClickedCharacter)
+      lastClickedLetter.set(justClickedCharacter)
+
+      lastClickedLetter = nil
+    end
   end
 end
