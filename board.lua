@@ -1,6 +1,17 @@
 local function getInitialBoard()
+  local function letter(glyph)
+    return {
+      get = function()
+        return glyph
+      end,
+      set = function(newLetter)
+        glyph = newLetter
+      end
+    }
+  end
   local function create10letters()
-    return {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
+    local l = letter
+    return { l('a'), l('b'), l('c'), l('d'), l('e'), l('f'), l('g'), l('h'), l('i'), l('j') }
   end
   local board = {
     create10letters(),
@@ -39,6 +50,11 @@ local function getInitialBoard()
 
   board.xend = board.x + board.width
   board.yend = board.x + board.height
+
+  -- just on the x for now
+  board.getLetter = function (xclick, yclick)
+    return board[math.floor(yclick / board.yspacing)][math.floor(xclick / board.xspacing)]
+  end
 
   return board
 end
